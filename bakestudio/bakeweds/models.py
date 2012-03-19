@@ -7,12 +7,12 @@ from datetime import datetime, timedelta
 class Product(models.Model):
 	description = models.CharField(max_length=500)
 
-	class Meta(self):
+	class Meta():
 		verbose_name= 'Baked thing'
 
 class BakeDay(models.Model):
 	date = models.DateTimeField()
-	product = models.ForeignKey(Product)
+	product = models.ForeignKey(Product,blank=True,null=True)
 	user = models.ForeignKey(User, unique_for_date='date')
 
 
