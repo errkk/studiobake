@@ -2,20 +2,27 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Bootstrap, from Twitter</title>
+    <title>Studio Bake Wednesday</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
+    <meta name="description" content="Studio Bake Wednesday app">
     <meta name="author" content="">
 
-    <!-- Le styles -->
+    <link href='http://fonts.googleapis.com/css?family=Crete+Round' rel='stylesheet' type='text/css'>
     <link href="/static/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/css/bootstrap-wysihtml5.css" rel="stylesheet">
     <style type="text/css">
       body {
         padding-top: 60px;
         padding-bottom: 40px;
       }
     </style>
+
+    
     <link href="/static/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="/static/css/style.css" rel="stylesheet">
+
+
+
 
     {% spaceless %}
     {% block head %}{% endblock %}
@@ -77,6 +84,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/js/wysihtml5-0.3.0_rc1.min.js"></script>
     <script src="/static/js/jquery.js"></script>
     <script src="/static/js/bootstrap-transition.js"></script>
     <script src="/static/js/bootstrap-alert.js"></script>
@@ -90,6 +98,14 @@
     <script src="/static/js/bootstrap-collapse.js"></script>
     <script src="/static/js/bootstrap-carousel.js"></script>
     <script src="/static/js/bootstrap-typeahead.js"></script>
-
+    <script src="/static/js/bootstrap-wysihtml5.js"></script>
+    
+    <script>
+      $(document).ready(function(){
+        {% block docready %}
+        
+        {% endblock %}
+      });
+    </script>
   </body>
 </html>

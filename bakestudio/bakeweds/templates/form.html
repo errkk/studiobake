@@ -1,0 +1,14 @@
+    <form action="" method="POST">
+        {% block form %}
+            {% csrf_token %}
+
+            {{form}}
+
+            <div class="form-actions">
+                {% block actions %}
+                <button type="submit" class="btn btn-primary">Save</button>
+                <a href="{{ success_url }}" class="btn">Cancel</a>
+                {% endblock %}
+            </div>
+        {% endblock %}
+    </form>
