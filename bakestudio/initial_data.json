@@ -1,0 +1,1 @@
+[{"pk": 1, "model": "bakeweds.product", "fields": {"description": "test", "thumbnail": "thumbs/souris_.png"}}, {"pk": 2, "model": "bakeweds.product", "fields": {"description": "asfd", "thumbnail": "thumbs/Cadenas.png"}}]

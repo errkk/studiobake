@@ -53,12 +53,15 @@ USE_L10N = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/home/media/media.lawrence.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = os.path.join( SITE_ROOT, 'media' )
+
+PHOTO_DIR = 'pictures'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
 # Examples: "http://media.lawrence.com/media/", "http://example.com/media/"
-MEDIA_URL = ''
+MEDIA_URL = '/media/'
+
 
 # Absolute path to the directory static files should be collected to.
 # Don't put anything in this directory yourself; store your static files
@@ -81,6 +84,7 @@ STATICFILES_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     os.path.join(SITE_ROOT, 'static'),
+    os.path.join(SITE_ROOT, 'media'),
 )
 
 # List of finder classes that know how to find static files in
@@ -107,7 +111,14 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    'django_notify.middleware.NotificationsMiddleware',
 )
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'django_notify.context_processors.notifications',
+    'django.core.context_processors.auth',
+)
+NOTIFICATIONS_STORAGE = 'session.SessionStorage'
 
 ROOT_URLCONF = 'bakestudio.urls'
 
@@ -116,6 +127,8 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
 )
+
+LOGIN_URL = '/login/'
 
 INSTALLED_APPS = (
     'django.contrib.auth',
@@ -126,8 +139,19 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'django.contrib.admin',
     'bakestudio.bakeweds',
-    'bootstrap'
+    'bootstrap',
+    'storages',
 )
+
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3.S3Storage'
+# AWS_ACCESS_KEY_ID = 'AKIAISOXJU7VYSBPV3CA'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'bakeweds'
+# from S3 import CallingFormat
+# AWS_CALLING_FORMAT = CallingFormat.SUBDOMAIN
+
+
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to

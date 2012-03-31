@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block docready %}
+  {# $('.wysihtml5').wysihtml5(); #}
+{% endblock %}
+
+{% block content %}
+
+  <div class="row detailpage">
+    <div class="span3">
+      <h2>{{ product.description }}</h2>
+      <img class="bakepic" src="/media/{{product.thumbnail}}" alt="" />
+    </div>
+    <div class="span7">
+      {% if comments %}
+        <h2>Comments</h2>
+        {% for comment in comments %}
+          <div class="item r_{{ comment.rating }}">
+          <h3>{{ comment.user.first_name }}</h3>
+          {{ comment.comment }}
+          {% if comment.user == user %}<a class="del" href="{% url bakeweds:delete_comment comment.id %}">&times;</a>{% endif %}
+
+          </div>
+        {% endfor %}
+      {% else %}
+        <h2>No Comments</h2>
+      {% endif %}
+      <div class="form-container">
+        <h2>Leave a Comment</h2>
+        {% include "form.html" with form=form %}
+      </div>
+      
+    </div>
+    
+  </div>
+
+{% endblock %}

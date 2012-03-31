@@ -1,1 +1,68 @@
+
+
+body{background:url(/static/img/wood.jpg) 50% 0 fixed;}
+
+/* Type */
 h1{font-size:2em; font-family: 'Crete Round', serif;}
+.brand{ font-family: 'Crete Round', serif; }
+a:hover{text-decoration:none;}
+
+
+
+.bakepic{ border:5px solid #fff;
+	-webkit-box-shadow:	0 2px 5px rgba(0,0,0,.3);
+	-moz-box-shadow:	0 2px 5px rgba(0,0,0,.3);
+	box-shadow:			0 2px 5px rgba(0,0,0,.3);
+	padding:10px;
+	margin-bottom:20px;
+	background:#fff;
+	border-radius:4px;
+	-webkit-transform:	rotate(-5deg);
+	-moz-transform:		rotate(-5deg);
+	-o-transform:		rotate(-5deg);
+	-ms-transform:		rotate(-5deg);
+	transform:			rotate(-5deg);
+}
+
+
+.lastweek{}
+
+.nexttime{background:#fff; margin:40px 0; padding:20px; box-shadow:0 2px 5px #ccc;
+	
+	-webkit-transform:	rotate(-3deg);
+	-moz-transform:		rotate(-3deg);
+	-o-transform:		rotate(-3deg);
+	-ms-transform:		rotate(-3deg);
+	transform:			rotate(-3deg);
+}
+h2{font-family: 'Swanky and Moo Moo', cursive; font-size:2.8em;}
+.detailpage h2{font-size:3.5em;}
+
+p.clear{clear:left;}
+
+.detailpage h2{margin-bottom:20px;}
+
+
+.item{border-bottom:1px solid #eee; padding:10px 20px; box-shadow:0 2px 5px #ccc;}
+	.item h3{ margin-left:-10px;}
+
+
+.form-container{margin:20px 0;}
+
+/* Internal page */
+.detailpage .span3 h2{color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.5);}
+
+.detailpage .span7{background:#fff; padding:20px; border-radius:4px;}
+
+.hero-unit{box-shadow:0 3px 6px rgba(0,0,0,0.3);}
+.hero-unit.row{margin-left:0;}
+
+/* Comments */
+.item {position: relative;}
+.item .del{position: absolute; top:10px; right:10px;}
+
+footer{color:#fff; text-shadow:0 1px 2px #000;}
+	footer p{float: left;}
+	footer p.right{float:right;}
+	footer a{ color:#fff; padding:0.3em;}
+	footer a:hover{background:yellow; text-shadow:none; color:#000;}

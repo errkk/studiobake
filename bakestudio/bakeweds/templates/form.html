@@ -1,8 +1,14 @@
-    <form action="" method="POST">
+    <form action="" method="POST" class="form-vertical">
         {% block form %}
             {% csrf_token %}
 
-            {{form}}
+            {% for field in form %}
+                <div class="control-group {% if field.errors %} error {% endif %}">
+                    
+                    {{ field.label_tag }} {{ field }}
+                    <span class="help-inline">{{ field.errors }}</span>
+                </div>
+            {% endfor %}
 
             <div class="form-actions">
                 {% block actions %}

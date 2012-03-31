@@ -1,18 +1,22 @@
 from django import forms
 from bootstrap.forms import BootstrapForm, Fieldset
+from models import Rating
 
-class CommentForm(BootstrapForm):
-    username = forms.CharField(max_length=100)
-    password = forms.CharField(widget=forms.PasswordInput(), max_length=100)
+class CommentForm(forms.ModelForm):
+	# username = forms.CharField(max_length=100)
+	# password = forms.CharField(widget=forms.PasswordInput(), max_length=100)
 
-    class Meta:
-        layout = (
-            Fieldset("Please Login", "username", "password", ),
-        )
+	class Meta:
 
-        widgets = {
-			'username': forms.Textarea(attrs={'cols': 80, 'rows': 20, 'class':'wysihtml5'}),
+		model = Rating
+		fields = ['rating','comment']
+
+		widgets = {
+			'comment': forms.Textarea(attrs={'cols': 200, 'rows': 5, 'class':'span6'}),
 		}
 
-    
+	
 
+class LoginForm(forms.Form):
+	username = forms.CharField(label='Username')
+	password = forms.CharField(widget=forms.PasswordInput,label='Password')
