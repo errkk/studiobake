@@ -109,7 +109,7 @@ def DeleteComment(request,id):
 
 def volunteer(request):
 	
-	instance = BakeDay.objects.all()[0]
+	instance = BakeDay.objects.all()[0] 
 
 	if request.method == 'POST':
 		form = VolunteerForm(request.POST,instance=instance)
