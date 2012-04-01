@@ -7,7 +7,7 @@ from django.core.urlresolvers import reverse
 from bakeweds.models import Product, BakeDay, Rating
 from django.contrib.auth import authenticate, login, logout
 
-from bakeweds.forms import CommentForm, LoginForm
+from bakeweds.forms import CommentForm, LoginForm, VolunteerForm
 
 from datetime import datetime
 
@@ -109,9 +109,19 @@ def DeleteComment(request,id):
 
 def volunteer(request):
 	
+	instance = BakeDay.objects.all()[0]
+
+	if request.method == 'POST':
+		form = VolunteerForm(request.POST,instance=instance)
+
+		if form.is_valid():
+			pass
+
+	else:
+		form = VolunteerForm(instance=instance)
 
 	return render(request,'volunteer.html', {
-		# 'form':form
+		'form':form
 		})	
 
 

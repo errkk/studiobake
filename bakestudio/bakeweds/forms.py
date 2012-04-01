@@ -1,6 +1,6 @@
 from django import forms
 from bootstrap.forms import BootstrapForm, Fieldset
-from models import Rating
+from models import Rating, BakeDay
 
 class CommentForm(forms.ModelForm):
 	# username = forms.CharField(max_length=100)
@@ -20,3 +20,12 @@ class CommentForm(forms.ModelForm):
 class LoginForm(forms.Form):
 	username = forms.CharField(label='Username')
 	password = forms.CharField(widget=forms.PasswordInput,label='Password')
+
+
+class VolunteerForm(forms.ModelForm):
+
+
+	class Meta:
+		model = BakeDay
+		fields = ['user']
+	
