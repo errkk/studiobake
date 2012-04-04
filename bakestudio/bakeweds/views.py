@@ -31,6 +31,7 @@ def index(request):
 		recent_item = Product.objects.filter(bakeday=last_bake_day)[0]
 	except IndexError:
 		recent_item = None
+		last_bake_day = None
 
 	try:
 		comments = Rating.objects.filter( product = recent_item ).count()

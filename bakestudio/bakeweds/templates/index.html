@@ -26,12 +26,14 @@
 
            <div class="span3 lastweek">
             <span class="label">{{ last_bake_day.date|date:'D d M' }}</span>
-            <img class="bakepic" src="/media/{{recent_item.thumbnail}}" alt="" />
+            {% if recent_item %}<img class="bakepic" src="/media/{{recent_item.thumbnail}}" alt="" />{% endif %}
             <h2>Last week</h2>
             
+            {% if recent_item %}
             <p>{{ last_bake_day.user.first_name }} made {{ recent_item.description }}</p>
-
+            
             <p><a class="btn" href="{% url bakeweds:detail recent_item.id %}">Leave a comment ({{ comments_count }}) &raquo;</a></p>
+            {% endif %}
           </div>
 
 
