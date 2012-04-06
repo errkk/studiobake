@@ -26,7 +26,7 @@
 
            <div class="span3 lastweek">
             <span class="label">{{ last_bake_day.date|date:'D d M' }}</span>
-            {% if recent_item %}<img class="bakepic" src="/media/{{recent_item.thumbnail}}" alt="" />{% endif %}
+            {% if recent_item %}<img class="bakepic" src="https://s3-eu-west-1.amazonaws.com/bakeweds/{{recent_item.thumbnail}}" alt="" />{% endif %}
             <h2>Last week</h2>
             
             {% if recent_item %}
