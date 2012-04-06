@@ -9,7 +9,7 @@ from django.contrib.auth import authenticate, login, logout
 
 from bakeweds.forms import CommentForm, LoginForm, VolunteerForm
 
-from datetime import datetime
+from datetime import datetime, timedelta
 
 
 
@@ -26,9 +26,15 @@ def index(request):
 	except IndexError:
 		next_bake_day = False
 
+
+	past_bakes = BakeDay.objects.filter(date__lte=today)[:6]
+
+	print past_bakes
+
+	
 	try:
-		last_bake_day = BakeDay.objects.filter(date__lte=today)[0]
-		recent_item = Product.objects.filter(bakeday=last_bake_day)[0]
+		last_bake_day = past_bakes[0]
+		recent_item = last_bake_day.product
 	except IndexError:
 		recent_item = None
 		last_bake_day = None
@@ -42,8 +48,8 @@ def index(request):
 	return render( request,'index.html', { 
 		'next_bake_day' : next_bake_day,
 		'last_bake_day' : last_bake_day,
-		'recent_item' : recent_item,
-		'comments_count' : comments
+		'comments_count' : comments,
+		'past_bakes'	: past_bakes
 		} )
 
 
@@ -109,14 +115,26 @@ def DeleteComment(request,id):
 
 
 def volunteer(request):
-	
-	instance = BakeDay.objects.all()[0] 
+	today = datetime.now()
+	future_bake_days = BakeDay.objects.filter(date__gt=today)
+
+	if future_bake_days:
+		instance = future_bake_days[0]
+	else:
+		instance = BakeDay()
+		
+		next_7days = [today.date() + timedelta(i) for i in xrange(7)]
+		next_wed = [d for d in next_7days if 'Wed' in d.ctime()][0]
+		
+		instance.date = next_wed
+
 
 	if request.method == 'POST':
 		form = VolunteerForm(request.POST,instance=instance)
 
 		if form.is_valid():
-			pass
+			if form.save():
+				request.notifications.error( '%s Was assigned for %s' % ( instance.user.first_name, instance.date ) )
 
 	else:
 		form = VolunteerForm(instance=instance)

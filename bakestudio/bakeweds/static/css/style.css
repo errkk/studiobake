@@ -49,6 +49,79 @@ p.clear{clear:left;}
 
 .form-container{margin:20px 0;}
 
+
+
+.pastbakes{padding:0 40px;}
+	.pastbakes a{margin-left:-30px; position: relative; display: inline-block;}
+	.pastbakes a .label{position: absolute; z-index:2; bottom:8px; background:#111; right:20px; font-size:1.5em; padding:0.5em; box-shadow:0 2px 5px rgba(0,0,0,.4);}	
+	.pastbakes a img{border:none;
+		-webkit-box-shadow:	0 2px 5px rgba(0,0,0,.3);
+		-moz-box-shadow:	0 2px 5px rgba(0,0,0,.3);
+		box-shadow:			0 2px 5px rgba(0,0,0,.3);
+		padding:10px;
+		margin-bottom:20px;
+		background:#fff;
+		border-radius:4px;
+	}
+	.pastbakes a{
+		-webkit-transition: 	all .2s ease-in-out;
+		-moz-transition: 		all .2s ease-in-out;
+		-o-transition: 			all .2s ease-in-out;
+		-ms-transition: 		all .2s ease-in-out;
+		transition: 			all .2s ease-in-out;
+		cursor: pointer;
+		-webkit-transform:	rotate(-3deg);
+		-moz-transform:		rotate(-3deg);
+		-o-transform:		rotate(-3deg);
+		-ms-transform:		rotate(-3deg);
+		transform:			rotate(-3deg);
+	}
+	.pastbakes a.a{
+		-webkit-transform:	rotate(-5deg);
+		-moz-transform:		rotate(-5deg);
+		-o-transform:		rotate(-5deg);
+		-ms-transform:		rotate(-5deg);
+		transform:			rotate(-5deg);
+	}
+	.pastbakes a.b{
+		-webkit-transform:	rotate(5deg);
+		-moz-transform:		rotate(5deg);
+		-o-transform:		rotate(5deg);
+		-ms-transform:		rotate(5deg);
+		transform:			rotate(5deg);
+	}
+	.pastbakes a.b:hover{
+		-webkit-transform:	rotate(-2deg);
+		-moz-transform:		rotate(-2deg);
+		-o-transform:		rotate(-2deg);
+		-ms-transform:		rotate(-2deg);
+		transform:			rotate(-2deg);
+	}
+	.pastbakes a.c{
+		-webkit-transform:	rotate(-3deg);
+		-moz-transform:		rotate(-3deg);
+		-o-transform:		rotate(-3deg);
+		-ms-transform:		rotate(-3deg);
+		transform:			rotate(-3deg);
+	}
+	.pastbakes a.c:hover{
+		-webkit-transform:	rotate(5deg);
+		-moz-transform:		rotate(5deg);
+		-o-transform:		rotate(5deg);
+		-ms-transform:		rotate(5deg);
+		transform:			rotate(5deg);
+	}
+	.pastbakes a:hover{
+		-webkit-transform:	rotate(3deg);
+		-moz-transform:		rotate(3deg);
+		-o-transform:		rotate(3deg);
+		-ms-transform:		rotate(3deg);
+		transform:			rotate(3deg);
+		cursor: pointer;
+
+	}
+	.pastbakes a:hover{}
+
 /* Internal page */
 .detailpage .span3 h2{color:#fff; text-shadow:0 1px 2px rgba(0,0,0,.5);}
 
