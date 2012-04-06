@@ -1,10 +1,9 @@
 from django import forms
 from bootstrap.forms import BootstrapForm, Fieldset
 from models import Rating, BakeDay
+from django.contrib.auth.models import User
 
 class CommentForm(forms.ModelForm):
-	# username = forms.CharField(max_length=100)
-	# password = forms.CharField(widget=forms.PasswordInput(), max_length=100)
 
 	class Meta:
 
@@ -22,10 +21,21 @@ class LoginForm(forms.Form):
 	password = forms.CharField(widget=forms.PasswordInput,label='Password')
 
 
+class UserModelChoiceField(forms.ModelChoiceField):
+    """
+    Extend ModelChoiceField for users so that the choices are
+    listed as 'first_name last_name (username)' instead of just
+    'username'.
+
+    """
+    def label_from_instance(self, obj):
+        return '%s %s' % ( obj.first_name, obj.last_name[:1] )
+
 class VolunteerForm(forms.ModelForm):
-
-
+	user = UserModelChoiceField(User.objects.all())
 	class Meta:
 		model = BakeDay
 		fields = ['user']
+
+	
 	

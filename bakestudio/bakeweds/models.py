@@ -115,8 +115,8 @@ class Product(models.Model):
 
 class BakeDay(models.Model):
 	date = models.DateField()
-	product = models.ForeignKey(Product,blank=True,null=True)
-	user = models.ForeignKey(User, unique_for_date='date')
+	product = models.OneToOneField(Product,blank=True,null=True)
+	user = models.OneToOneField(User, unique_for_date='date')
 
 	class Meta():
 		verbose_name = 'Bake day'

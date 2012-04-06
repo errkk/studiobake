@@ -17,8 +17,6 @@ from datetime import datetime, timedelta
 
 def index(request):
 
-	
-
 	today = datetime.now()
 
 	try:
@@ -28,9 +26,6 @@ def index(request):
 
 
 	past_bakes = BakeDay.objects.filter(date__lte=today)[:6]
-
-	print past_bakes
-
 	
 	try:
 		last_bake_day = past_bakes[0]
@@ -114,6 +109,7 @@ def DeleteComment(request,id):
 	return HttpResponseRedirect( reverse('bakeweds:detail', args=[comment.product.id]) )
 
 
+@login_required
 def volunteer(request):
 	today = datetime.now()
 	future_bake_days = BakeDay.objects.filter(date__gt=today)

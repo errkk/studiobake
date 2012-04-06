@@ -17,6 +17,7 @@ a:hover{text-decoration:none;}
 	margin-bottom:20px;
 	background:#fff;
 	border-radius:4px;
+	width:200px; height:200px;
 	-webkit-transform:	rotate(-5deg);
 	-moz-transform:		rotate(-5deg);
 	-o-transform:		rotate(-5deg);
@@ -49,12 +50,14 @@ p.clear{clear:left;}
 
 .form-container{margin:20px 0;}
 
-
+.bakedetailcontainer{position: relative;}
 
 .pastbakes{padding:0 40px;}
 	.pastbakes a{margin-left:-30px; position: relative; display: inline-block;}
+	.bakedetailcontainer .label,
 	.pastbakes a .label{position: absolute; z-index:2; bottom:8px; background:#111; right:20px; font-size:1.5em; padding:0.5em; box-shadow:0 2px 5px rgba(0,0,0,.4);}	
 	.pastbakes a img{border:none;
+		width:200px; height:200px;
 		-webkit-box-shadow:	0 2px 5px rgba(0,0,0,.3);
 		-moz-box-shadow:	0 2px 5px rgba(0,0,0,.3);
 		box-shadow:			0 2px 5px rgba(0,0,0,.3);

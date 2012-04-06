@@ -15,7 +15,7 @@
               {% if next_bake_day %}<span class="label">{{ next_bake_day.date|date:'D d M' }}</span>{% endif %}
               <h2>Next week</h2>
               {% if next_bake_day.user %}
-              <p><strong>{{ next_bake_day.user.get_full_name }}</strong>'s doing it</p>
+              <p><strong>{{ next_bake_day.user.first_name }}</strong>'s doing it</p>
               {% else %}
               <p><a class="btn" href="{% url bakeweds:volunteer %}">Choose someone &raquo;</a></p>
               {% endif %}
@@ -34,7 +34,7 @@
               {% if recent %}
               <p>{{ recent.user.first_name }} made {{ recent.product.description }}</p>
               
-              <p><a class="btn" href="{% url bakeweds:detail recent.product.id %}">Leave a comment ({{ recent.product }}) &raquo;</a></p>
+              <p><a class="btn" href="{% url bakeweds:detail recent.product.id %}">Leave a comment ({{ comments_count }}) &raquo;</a></p>
               {% endif %}
             {% endwith %}
           </div>
