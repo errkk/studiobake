@@ -47,7 +47,7 @@
           {% if past_bakes %}
             {% for bake in past_bakes %}
               {% if bake.product %}
-              <a class="{% cycle a,b,c %}" href="{% url bakeweds:detail bake.id %}">
+              <a class="{% cycle a,b,c %}" href="{% url bakeweds:detail bake.product.id %}">
                 <img src="https://s3-eu-west-1.amazonaws.com/bakeweds/{{ bake.product.thumbnail }}" alt="{{ bake.product.description }}" />
                 <span class="label">{{ bake.user.first_name }}</span>
               </a>
