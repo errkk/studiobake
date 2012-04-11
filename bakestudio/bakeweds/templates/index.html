@@ -31,7 +31,7 @@
               {% if recent.product %}<img class="bakepic" src="https://s3-eu-west-1.amazonaws.com/bakeweds/{{recent.product.thumbnail}}" alt="" />{% endif %}
               <h2>Last week</h2>
               
-              {% if recent %}
+              {% if recent.product %}
               <p>{{ recent.user.first_name }} made {{ recent.product.description }}</p>
               
               <p><a class="btn" href="{% url bakeweds:detail recent.product.id %}">Leave a comment ({{ comments_count }}) &raquo;</a></p>
