@@ -20,7 +20,7 @@ def index(request):
 	today = datetime.now()
 
 	try:
-		next_bake_day = BakeDay.objects.filter(date__gt=today)[0]
+		next_bake_day = BakeDay.objects.filter(date__gte=today)[0]
 	except IndexError:
 		next_bake_day = False
 
