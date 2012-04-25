@@ -13,6 +13,28 @@ from datetime import datetime, timedelta
 
 
 
+def get_next_wed():
+	'''
+	Make an instance of Bakeday thats for the next coming wednesday, it its not created in the DB, then make one by counting days
+	'''
+	
+	today = datetime.now()
+
+	instance = BakeDay()
+
+	# Loop thru coming week untill wednesday is got to		
+	next_7days = [today.date() + timedelta(i) for i in xrange(7)]
+	next_wed = [d for d in next_7days if 'Wed' in d.ctime()][0]
+
+	# If today is wednesday, just add a week to today
+	if 'Wed' in today.ctime():
+		next_wed = today.date() + timedelta(7)
+	
+	instance.date = next_wed
+
+	return instance
+
+
 
 
 def index(request):
@@ -20,9 +42,9 @@ def index(request):
 	today = datetime.now()
 
 	try:
-		next_bake_day = BakeDay.objects.filter(date__gte=today).order_by('date')[0]
+		next_bake_day = BakeDay.objects.filter(date__gt=today).order_by('date')[0]
 	except IndexError:
-		next_bake_day = False
+		next_bake_day = get_next_wed()
 
 
 	past_bakes = BakeDay.objects.filter(date__lte=today).order_by('-date')[:6]
@@ -100,6 +122,9 @@ def detail(request,id):
 		'comments' : comments
 		} )
 
+
+
+
 def DeleteComment(request,id):
 	comment = Rating.objects.get(pk=id)
 
@@ -107,6 +132,8 @@ def DeleteComment(request,id):
 		request.notifications.error('Comment deleted')
 
 	return HttpResponseRedirect( reverse('bakeweds:detail', args=[comment.product.id]) )
+
+
 
 
 @login_required
@@ -117,12 +144,7 @@ def volunteer(request):
 	if future_bake_days:
 		instance = future_bake_days[0]
 	else:
-		instance = BakeDay()
-		
-		next_7days = [today.date() + timedelta(i) for i in xrange(7)]
-		next_wed = [d for d in next_7days if 'Wed' in d.ctime()][0]
-		
-		instance.date = next_wed
+		instance = get_next_wed()
 
 
 	if request.method == 'POST':
