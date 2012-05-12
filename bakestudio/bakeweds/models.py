@@ -17,7 +17,7 @@ import uuid
 
 def is_accectable_file(filename):
 	extension = filename.split('.')[-1]
-	acceptable_filetypes = ['jpeg','jpeg','gif','png']
+	acceptable_filetypes = ['jpeg','jpeg','gif','png','jpg']
 	if extension in acceptable_filetypes:
 		return True
 	else:
@@ -65,8 +65,9 @@ class Product(models.Model):
 
 
 	def save(self, *args, **kwargs):
+		
 		if is_accectable_file(self.thumbnail.name):
-			
+		
 			try:
 				# remove old image from amazon
 				old_instance = Product.objects.get(pk=self.id)
@@ -82,7 +83,7 @@ class Product(models.Model):
 			size = 200, 200
 			filename = str(self.thumbnail.path)
 			image = Image.open(filename)
-			image.thumbnail(size, Image.ANTIALIAS)
+			image.thumbnail(size, Image.ANTIALIAS)			
 			image.save(filename)
 			
 			# send to amazon and remove from local file system
