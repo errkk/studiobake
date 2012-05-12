@@ -47,7 +47,7 @@ def index(request):
 		next_bake_day = get_next_wed()
 
 
-	past_bakes = BakeDay.objects.filter(date__lte=today).order_by('-date')[:6]
+	past_bakes = BakeDay.objects.filter(date__lte=today).order_by('-date')[:7]
 	
 	try:
 		last_bake_day = past_bakes[0]
