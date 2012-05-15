@@ -1,5 +1,10 @@
+<<<<<<< HEAD
 venv
 *.pyc
 .DS_Store
 db.sqlite
 bakestudio/media/*
+=======
+*.pyc
+*.pyo
+>>>>>>> 71b225b305b16be6d2dedba03e9f1247483ab928
